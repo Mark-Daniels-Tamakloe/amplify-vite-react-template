@@ -1,41 +1,91 @@
 # AWS Amplify Full-Stack To-Do App
 
-This project documents my end-to-end implementation of a full-stack to-do application using **React + Vite** and **AWS Amplify Gen 2**. I completed this project as a hands-on cloud development exercise to learn how to build, configure, authenticate, deploy, and secure a modern full-stack application using AWS services.
+A cloud-connected full-stack web application built with **React + Vite** and **AWS Amplify Gen 2**, featuring user authentication, per-user data isolation, and full local-to-cloud deployment.
 
 ---
 
-## Overview
+## Tech Stack
 
-This project started from the AWS Amplify React + Vite starter template and evolved into a working cloud-connected application with:
-
-- user authentication
-- create and delete to-do functionality
-- local frontend testing
-- cloud sandbox deployment
-- owner-based authorization
-- GitHub version control
-
-The goal of this project was to understand how a frontend application connects to AWS backend resources and how local development workflows interact with cloud infrastructure.
+| Frontend | Backend / Cloud |
+|----------|----------------|
+| React + TypeScript | AWS Amplify Gen 2 |
+| Vite | Amazon Cognito (Auth) |
+| AWS Amplify UI | AWS AppSync (GraphQL API) |
+| | Amazon DynamoDB |
+| | AWS IAM + CLI |
 
 ---
 
 ## Features
 
-- **Authentication**: Implemented secure sign-up, sign-in, and sign-out using Amazon Cognito through Amplify Authenticator.
-- **API and Data**: Connected the app to Amplify backend data resources for storing and managing to-do items.
-- **CRUD Functionality**: Added support for creating and deleting to-do items.
-- **Per-User Authorization**: Restricted each signed-in user to only access their own to-do data.
-- **Local Cloud Development**: Configured and deployed an Amplify cloud sandbox from my local machine.
-- **Version Control**: Managed the project with Git and GitHub.
+- **Authentication** — Secure sign-up, sign-in, and sign-out via Amazon Cognito using Amplify Authenticator
+- **CRUD Functionality** — Create and delete to-do items connected to a live cloud backend
+- **Owner-Based Authorization** — Each authenticated user can only access their own data
+- **Cloud Sandbox Deployment** — Backend deployed and tested locally using `npx ampx sandbox`
+- **IAM Configuration** — AWS CLI configured with scoped IAM credentials and validated with `aws sts get-caller-identity`
 
 ---
 
-## Project Walkthrough
-
-### Step 1: Created and Cloned the Repository
-I started by creating the starter repository from the AWS Amplify React + Vite template and cloning it into my local machine.
+## How to Run Locally
 
 ```bash
+# 1. Clone the repo
 git clone https://github.com/Mark-Daniels-Tamakloe/amplify-vite-react-template.git
 cd amplify-vite-react-template
+
+# 2. Install dependencies
 npm install
+
+# 3. Configure AWS credentials
+aws configure
+
+# 4. Start the Amplify cloud sandbox (Terminal 1)
+npx ampx sandbox
+
+# 5. Start the frontend (Terminal 2)
+npm run dev
+```
+
+Open `http://localhost:5173/` in your browser.
+
+---
+
+## Project Structure
+
+amplify-vite-react-template/
+├── amplify/          # Backend config (data model, auth, authorization)
+├── src/              # React frontend (App.tsx, main.tsx)
+├── amplify_outputs.json
+├── package.json
+└── vite.config.ts
+
+---
+
+## Key Implementation Details
+
+**Delete functionality** (`src/App.tsx`):
+```typescript
+function deleteTodo(id: string) {
+  client.models.Todo.delete({ id });
+}
+```
+
+**Owner-based authorization** (`amplify/data/resource.ts`):
+Authorization rules updated to scope all data access to the signed-in Cognito user, ensuring complete data isolation per account.
+
+---
+
+## Challenges Solved
+
+- Debugged GitHub HTTPS authentication by switching to a personal access token
+- Resolved invalid AWS token errors by rotating IAM access keys and reconfiguring the CLI
+- Fixed Node.js version incompatibility preventing `npx ampx sandbox` from running
+
+---
+
+## Author
+
+**Mark-Daniels Tamakloe**  
+MSc Computer Science — Washington University in St. Louis  
+MSc Mathematical Sciences — East Tennessee State University  
+[LinkedIn](#)
