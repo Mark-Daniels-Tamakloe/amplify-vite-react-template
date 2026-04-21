@@ -18,6 +18,13 @@ This project started from the AWS Amplify React + Vite starter template and evol
 
 ---
 
+
+## Architecture
+
+![Architecture Diagram](./architectural%20diagram.png)
+
+---
+
 ## Tech Stack
 
 | Frontend | Backend / Cloud |
