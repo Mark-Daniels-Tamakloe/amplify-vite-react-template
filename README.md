@@ -4,9 +4,17 @@ A cloud-connected full-stack web application built with **React + Vite** and **A
 
 ---
 
+---
+
 ## Overview
 
 This project started from the AWS Amplify React + Vite starter template and evolved into a working cloud-connected application. The goal was to understand how a frontend application connects to AWS backend resources and how local development workflows interact with cloud infrastructure.
+
+---
+
+## Live Demo                          
+
+🔗 [https://main.d2l8h0529vv0po.amplifyapp.com](https://main.d2l8h0529vv0po.amplifyapp.com)
 
 ---
 
