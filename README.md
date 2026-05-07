@@ -2,7 +2,6 @@
 
 A cloud-connected full-stack web application built with **React + Vite** and **AWS Amplify Gen 2**, featuring user authentication, per-user data isolation, and a full local-to-cloud development workflow.
 
----
 
 ---
 
@@ -14,7 +13,7 @@ This project started from the AWS Amplify React + Vite starter template and evol
 
 ## Live Demo                          
 
-🔗 [https://main.d2l8h0529vv0po.amplifyapp.com](https://main.d2l8h0529vv0po.amplifyapp.com)
+🔗 [https://main.dofgi4snhnqvm.amplifyapp.com](https://main.dofgi4snhnqvm.amplifyapp.com)
 
 ---
 
@@ -221,7 +220,6 @@ amplify-vite-react-template/
 - Add due dates and priorities
 - Improve UI styling
 - Add error handling
-- Deploy the application publicly
 - Add screenshots and a demo walkthrough
 
 ---
